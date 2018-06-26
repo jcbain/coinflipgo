@@ -23,7 +23,7 @@ func FlipCondition() int {
         previous := 0
         current  := 1
         s        := flips[previous: current+1]
-        cond     := []string{"heads","tails"}
+        cond     := []string{"heads","heads"}
         numflips := 2
 
         for !reflect.DeepEqual(s, cond) {
@@ -43,6 +43,7 @@ func mean(vals[]int) float64 {
         return tot/float64(len(vals))
 }
 
+// run multiple trials
 func FlippityFlip(numtrials int) []int {
         vals := make([]int, numtrials)
         for i := 0; i < numtrials; i++ {
@@ -52,5 +53,6 @@ func FlippityFlip(numtrials int) []int {
 }
 
 func main() {
-        fmt.Println(FlippityFlip(10))
+        trials := FlippityFlip(10000)
+        fmt.Println(mean(trials))
 }
